@@ -34,6 +34,23 @@ class TestingApplicationTests {
 			return null;
 	}
 	@Test
+	void Pentest(){
+		Control c = new Control();
+        Random random = new Random();
+
+        int n = random.nextInt(1,5);
+        String k;
+        c.setBoard(n);
+		for (int i = 0; i < n; i++) {
+			c.current.setPen(true);
+			assert c.current.isPen();
+			c.current.setPen(false);
+			assert !c.current.isPen();
+
+		}
+
+	}
+	@Test
 	void floorTest(){
 		Control c = new Control();
 		Random random = new Random();
