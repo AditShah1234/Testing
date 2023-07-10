@@ -16,34 +16,37 @@ public class Control {
 
         switch (action) {
             case 'L':
+                left();
 
                 break;
             case 'R':
-
+                rigth();
                 break;
             case 'U':
+                up();
 
                 break;
             case 'D':
-
+                down();
                 break;
             case 'M':
                 int spaces = parseSpaces(command);
                 System.out.println(spaces);
                 break;
             case 'P':
-
+                //Print N *N
                 break;
             case 'C':
-
+                System.out.println(current.toString());
                 break;
             case 'Q':
-
+                System.out.println("Stopping the program...");
+                System.exit(0);
                 break;
-
             case 'I':
                 int size = parseSize(command);
                 System.out.println(size);
+                init(size);
                 break;
             default:
                 System.out.println("Invalid command");
@@ -72,5 +75,52 @@ public class Control {
     }
 
 
+
+
+    private void rigth() {
+
+        if (current.getRot() == 0) {
+            current.setRot(1);
+
+        }
+        else if (current.getRot() == 1) {
+            current.setRot(2);
+        }
+        else if (current.getRot() == 2) {
+            current.setRot(3);
+        }
+        else {
+            current.setRot(0);
+        }
+
+
+    }
+
+    private void init(int n) {
+        current = new Current(n);
+    }
+
+    private void left() {
+        if (current.getRot() == 0) {
+            current.setRot(3);
+        }
+        else if (current.getRot() == 1) {
+            current.setRot(0);
+        }
+        else if (current.getRot() == 2) {
+            current.setRot(1);
+        }
+        else {
+            current.setRot(2);
+        }
+    }
+
+    private void up() {
+        current.setPen(false);
+    }
+
+    private void down() {
+        current.setPen(true);
+    }
 
 }
