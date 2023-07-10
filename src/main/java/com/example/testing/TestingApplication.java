@@ -19,9 +19,14 @@ public class TestingApplication {
 
 		while (true) {
 			System.out.print("Enter command: ");
-			String command = scanner.nextLine();
+			try {
+				String command = scanner.nextLine();
 
-			robo.commandCenter(command);
+				robo.commandCenter(command);
+			}
+			catch (Exception e) {
+                continue;
+            }
 
 	}
 	}

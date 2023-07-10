@@ -3,21 +3,22 @@ package com.example.testing.fun;
 import java.util.Arrays;
 
 public class Current {
+    public Current.facing facing;
     private int[][] floor;
     private int cX;
     private int cY;
     private boolean Pen;
     private facing currentFace;
+    private int rot;
 
-    private int rot =0;
     public Current(int n) {
-        System.out.println(n+"djk");
+        System.out.println(n);
         floor = new int[n][n];
         currentFace  = facing.NORTH;
         cX  = 0;
         cY = 0;
         Pen = false;
-        int rot =90;
+        rot =0;
     }
 
     public int[][] getFloor() {
@@ -59,17 +60,25 @@ public class Current {
     public void setCurrentFace(facing currentFace) {
         this.currentFace = currentFace;
     }
-
+    String[] array = {"North", "East", "South", "West"};
 
     @Override
     public String toString() {
         return "Current{" +
-                "floor=" + Arrays.toString(floor) +
+                "floor=" + "Todo" +
                 ", cX=" + cX +
                 ", cY=" + cY +
                 ", Pen=" + Pen +
-                ", currentFace=" + currentFace +
+                ", currentFace=" + array[rot] +
                 '}';
+    }
+
+    public int getRot() {
+        return rot;
+    }
+
+    public void setRot(int rot) {
+        this.rot = rot;
     }
 
     public enum facing {
