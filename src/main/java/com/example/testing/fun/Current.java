@@ -60,7 +60,7 @@ public class Current {
     public void setCurrentFace(facing currentFace) {
         this.currentFace = currentFace;
     }
-    String[] array = {"North", "East", "South", "West"};
+    public String[] array = {"North", "East", "South", "West"};
 
     @Override
     public String toString() {
