@@ -1,5 +1,8 @@
 package com.example.testing.fun;
 
+
+
+
 public class Control {
 
     Current current;
@@ -20,7 +23,7 @@ public class Control {
 
                 break;
             case 'R':
-                rigth();
+                right();
                 break;
             case 'U':
                 up();
@@ -31,7 +34,7 @@ public class Control {
                 break;
             case 'M':
                 int spaces = parseSpaces(command);
-                System.out.println(spaces);
+                move(spaces);
                 break;
             case 'P':
                 //Print N *N
@@ -49,8 +52,8 @@ public class Control {
                 init(size);
                 break;
             default:
-                System.out.println("Invalid command");
-                break;
+            	throw new IllegalArgumentException("Invalid input");	
+                
         }
         current.toString();
 
@@ -73,11 +76,92 @@ public class Control {
         }
         return spaces;
     }
+    
+    private void move(int spaces) {
+    	
+    	    //North
+    	    if(current.getRot()==0) {
+    	    	if(current.getcY()+spaces>= current.getFloor().length) {	
+    	    	   throw new IndexOutOfBoundsException("Out of bounds error");	
+    	    	   }
+    	    	else{
+    	    		if(current.isPen()==true) {	
+    	    			int[][] newfloor = current.getFloor();
+    	    			for(int i=0;i<=spaces;i++) {
+    	    			newfloor[current.getcX()][current.getcY()+i]=1;
+    	    			}
+    	    			current.setFloor(newfloor);
+    	    			current.setcY(current.getcY()+spaces);	
+    	    		    }
+    	    		else {
+    	                current.setcY(current.getcY()+spaces);
+    	    	}
+    	    }	
+}
+    	    //East
+    	    else if(current.getRot()==1) {
+    	    	
+    	    	if(current.getcX()+spaces>=current.getFloor().length) {
+    	    		throw new IndexOutOfBoundsException("Out of bounds error");		
+    	    	}
+    	    	else {	
+    	    		if(current.isPen()==true) {	
+    	    			int[][] newfloor = current.getFloor();
+    	    			for(int i=0;i<=spaces;i++) {
+    	    			newfloor[current.getcX()+i][current.getcY()]=1;
+    	    			}
+    	    			current.setFloor(newfloor);
+    	    			current.setcY(current.getcX()+spaces);	
+    	    		    }
+    	    		else {
+    	                current.setcY(current.getcX()+spaces);
+    	    	}
+    	    }	
+}
+    	    //South
+    	    else if(current.getRot()==2) {  	
+    	    	if(current.getcY()-spaces<0) {
+    	    		throw new IndexOutOfBoundsException("Out of bounds error");		    		
+    	    	}
+    	    	else {
+	    		    if(current.isPen()==true) {	
+    	    			int[][] newfloor = current.getFloor();
+    	    			for(int i=0;i<=spaces;i++) {
+    	    			newfloor[current.getcX()][current.getcY()-i]=1;
+    	    			}
+    	    			current.setFloor(newfloor);
+    	    			current.setcY(current.getcY()-spaces);	
+    	    		    }
+    	    		else {
+    	                current.setcY(current.getcY()-spaces);
+    	    	}
+    	    }	
+}
+    	    //West
+    	    else if(current.getRot()==3) {
+    	    	if(current.getcX()-spaces<0) {  	    		
+    	    		throw new IndexOutOfBoundsException("Out of bounds error");	
+    	    	}
+    	    	else {
+    	    		
+    	    		if(current.isPen()==true) {	
+    	    			int[][] newfloor = current.getFloor();
+    	    			for(int i=0;i<=spaces;i++) {
+    	    			newfloor[current.getcX()-i][current.getcY()]=1;
+    	    			}
+    	    			current.setFloor(newfloor);
+    	    			current.setcY(current.getcX()-spaces);	
+    	    		    }
+    	    		else {
+    	                current.setcY(current.getcX()-spaces);
+    	    	}
+    	    }	
+}}
 
 
 
 
-    private void rigth() {
+    private void right() {
 
         if (current.getRot() == 0) {
             current.setRot(1);
