@@ -1,8 +1,11 @@
 package com.example.testing;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.example.testing.fun.Control;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -97,5 +100,48 @@ class TestingApplicationTests {
             assert next_dir(curr, k).equals(s);
 			}
         }
+	
+	@Test
+	void MoveOutOfBoundsTest() {
+		Control c= new Control();
+		int n=10;
+		c.setBoard(n);
+		Throwable exception = assertThrows(
+				IndexOutOfBoundsException.class, () -> {
+					c.commandCenter("M 11");             	
+                }
+        );
+        Assertions.assertEquals("Out of bounds error", exception.getMessage());
+			
+
+}
+	@Test
+	void MovePenDownFunctionTest() {
+		Control c = new Control();
+		int n=10;
+		c.setBoard(n);
+		c.commandCenter("D");
+		c.commandCenter("M 9");
+		for(int i=0;i<10;i++) {
+			
+			assert c.current.getFloor()[0][0+i]==1;
+		}
+		
+		
+		
+	}
+	
+	@Test
+	void MoveFunctionTest() {
+		Control c = new Control();
+		int n=10;
+		c.setBoard(n);
+		c.commandCenter("D");
+		c.commandCenter("M 9");	
+		assert c.current.getcY()==9;		
+	}
+	
+
+
 
 }
