@@ -49,6 +49,10 @@ public class Control {
                 break;
             case 'I':
                 int size = parseSize(command);
+                if (size==-1) {
+                    System.out.println("Invalid input");
+                    break;
+                 }
                 System.out.println(size);
                 init(size);
                 break;
@@ -59,16 +63,16 @@ public class Control {
         current.toString();
 
     }
-    private int parseSize(String command) {
+    public int parseSize(String command) {
         int size = 0;
         try {
             size = Integer.parseInt(command.substring(2));
         } catch (NumberFormatException e) {
-            System.out.println("Invalid size!");
+            return -1;
         }
         return size;
     }
-    private int parseSpaces(String command) {
+    public int parseSpaces(String command) {
         int spaces = 0;
         try {
             spaces = Integer.parseInt(command.substring(2));

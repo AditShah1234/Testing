@@ -21,9 +21,9 @@ public class Current {
         rot =0;
     }
 
-//    public int[][] getFloor() {
-//        return floor;
-//    }
+    public int[][] getFloor() {
+        return floor;
+    }
     public void printFloor() {
         int size = floor.length;
 

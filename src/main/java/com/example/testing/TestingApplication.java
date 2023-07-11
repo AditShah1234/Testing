@@ -11,22 +11,38 @@ public class TestingApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TestingApplication.class, args);
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Enter the size of the floor: ");
-		int size = scanner.nextInt();
-		Control robo = new Control();
-		robo.setBoard(size);
 
+
+		Control robo = new Control();
+
+		Boolean start = true;
 
 		while (true) {
-			System.out.print("Enter command: ");
-			try {
+			if (!start) {
+				System.out.print("Enter command: ");
 				String command = scanner.nextLine();
 
 				robo.commandCenter(command);
+
 			}
-			catch (Exception e) {
-                continue;
-            }
+			else {
+				System.out.print("Please Initialize the board: ");
+				String command = scanner.nextLine();
+				if (command.toUpperCase().charAt(0) == 'I') {
+
+					int size = robo.parseSize(command);
+
+					if (size == -1){
+						System.out.println("Error parsing");
+					}
+					else {
+						robo.setBoard(size);
+						start = false;
+
+					}
+				}
+			}
+
 
 	}
 	}
