@@ -21,10 +21,19 @@ public class Current {
         rot =0;
     }
 
-    public int[][] getFloor() {
-        return floor;
-    }
+//    public int[][] getFloor() {
+//        return floor;
+//    }
+    public void printFloor() {
+        int size = floor.length;
 
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print(floor[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
     public void setFloor(int[][] floor) {
         this.floor = floor;
     }
@@ -60,7 +69,7 @@ public class Current {
     public void setCurrentFace(facing currentFace) {
         this.currentFace = currentFace;
     }
-    public String[] array = {"North", "East", "South", "West"};
+    String[] array = {"North", "East", "South", "West"};
 
     @Override
     public String toString() {

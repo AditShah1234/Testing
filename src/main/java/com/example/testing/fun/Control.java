@@ -5,7 +5,7 @@ package com.example.testing.fun;
 
 public class Control {
 
-    public Current current;
+    Current current;
 
     public void setBoard(int n) {
         current = new Current(n);
@@ -20,6 +20,7 @@ public class Control {
         switch (action) {
             case 'L':
                 left();
+
                 break;
             case 'R':
                 right();
@@ -37,6 +38,7 @@ public class Control {
                 break;
             case 'P':
                 //Print N *N
+            	current.printFloor();
                 break;
             case 'C':
                 System.out.println(current.toString());
@@ -205,5 +207,7 @@ public class Control {
     private void down() {
         current.setPen(true);
     }
+    
+
 
 }
