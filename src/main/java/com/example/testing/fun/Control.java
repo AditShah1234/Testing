@@ -5,7 +5,7 @@ package com.example.testing.fun;
 
 public class Control {
 
-    Current current;
+    public Current current;
 
     public void setBoard(int n) {
         current = new Current(n);
@@ -116,10 +116,10 @@ public class Control {
     	    			newfloor[current.getcX()+i][current.getcY()]=1;
     	    			}
     	    			current.setFloor(newfloor);
-    	    			current.setcY(current.getcX()+spaces);	
+    	    			current.setcX(current.getcX()+spaces);	
     	    		    }
     	    		else {
-    	                current.setcY(current.getcX()+spaces);
+    	                current.setcX(current.getcX()+spaces);
     	    	}
     	    }	
 }
@@ -155,10 +155,10 @@ public class Control {
     	    			newfloor[current.getcX()-i][current.getcY()]=1;
     	    			}
     	    			current.setFloor(newfloor);
-    	    			current.setcY(current.getcX()-spaces);	
+    	    			current.setcX(current.getcX()-spaces);	
     	    		    }
     	    		else {
-    	                current.setcY(current.getcX()-spaces);
+    	                current.setcX(current.getcX()-spaces);
     	    	}
     	    }	
 }}
