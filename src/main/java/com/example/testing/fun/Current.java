@@ -74,7 +74,6 @@ public class Current {
     @Override
     public String toString() {
         return "Current{" +
-                "floor=" + "Todo" +
                 ", cX=" + cX +
                 ", cY=" + cY +
                 ", Pen=" + Pen +
