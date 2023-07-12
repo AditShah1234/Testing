@@ -56,7 +56,7 @@ public class Control {
                 init(size);
                 break;
             default:
-            	throw new IllegalArgumentException("Invalid input");	
+                System.out.println(new IllegalArgumentException("Invalid input").toString());
                 
         }
         current.toString();
@@ -85,8 +85,9 @@ public class Control {
     	
     	    //North
     	    if(current.getRot()==0) {
-    	    	if(current.getcY()+spaces>= current.getFloor().length) {	
-    	    	   throw new IndexOutOfBoundsException("Out of bounds error");	
+    	    	if(current.getcY()+spaces>= current.getFloor().length) {
+                    System.out.println(new IndexOutOfBoundsException("Out of bounds error").toString());
+//    	    	   throw new IndexOutOfBoundsException("Out of bounds error");
     	    	   }
     	    	else{
     	    		if(current.isPen()==true) {	
@@ -106,10 +107,11 @@ public class Control {
     	    else if(current.getRot()==1) {
     	    	
     	    	if(current.getcX()+spaces>=current.getFloor().length) {
-    	    		throw new IndexOutOfBoundsException("Out of bounds error");		
+                    System.out.println(new IndexOutOfBoundsException("Out of bounds error").toString());
+//    	    		throw new IndexOutOfBoundsException("Out of bounds error");
     	    	}
     	    	else {	
-    	    		if(current.isPen()==true) {	
+    	    		if(current.isPen()) {
     	    			int[][] newfloor = current.getFloor();
     	    			for(int i=0;i<=spaces;i++) {
     	    			newfloor[current.getcX()+i][current.getcY()]=1;
@@ -125,10 +127,11 @@ public class Control {
     	    //South
     	    else if(current.getRot()==2) {  	
     	    	if(current.getcY()-spaces<0) {
-    	    		throw new IndexOutOfBoundsException("Out of bounds error");		    		
+                    System.out.println(new IndexOutOfBoundsException("Out of bounds error").toString());
+//    	    		throw new IndexOutOfBoundsException("Out of bounds error");
     	    	}
     	    	else {
-	    		    if(current.isPen()==true) {	
+	    		    if(current.isPen()) {
     	    			int[][] newfloor = current.getFloor();
     	    			for(int i=0;i<=spaces;i++) {
     	    			newfloor[current.getcX()][current.getcY()-i]=1;
@@ -143,12 +146,13 @@ public class Control {
 }
     	    //West
     	    else if(current.getRot()==3) {
-    	    	if(current.getcX()-spaces<0) {  	    		
-    	    		throw new IndexOutOfBoundsException("Out of bounds error");	
+    	    	if(current.getcX()-spaces<0) {
+                    System.out.println(new IndexOutOfBoundsException("Out of bounds error").toString());
+//    	    		throw new IndexOutOfBoundsException("Out of bounds error");
     	    	}
     	    	else {
     	    		
-    	    		if(current.isPen()==true) {	
+    	    		if(current.isPen()) {
     	    			int[][] newfloor = current.getFloor();
     	    			for(int i=0;i<=spaces;i++) {
     	    			newfloor[current.getcX()-i][current.getcY()]=1;
