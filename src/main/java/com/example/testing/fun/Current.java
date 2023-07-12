@@ -29,7 +29,7 @@ public class Current {
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                System.out.print(floor[i][j] + " ");
+                System.out.print(floor[j][size-i-1] + " ");
             }
             System.out.println();
         }
@@ -69,11 +69,12 @@ public class Current {
     public void setCurrentFace(facing currentFace) {
         this.currentFace = currentFace;
     }
-    String[] array = {"North", "East", "South", "West"};
+    public String[] array = {"North", "East", "South", "West"};
 
     @Override
     public String toString() {
         return "Current{" +
+                "floor=" + "Todo" +
                 ", cX=" + cX +
                 ", cY=" + cY +
                 ", Pen=" + Pen +

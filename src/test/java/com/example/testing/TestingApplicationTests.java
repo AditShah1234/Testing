@@ -151,7 +151,9 @@ class TestingApplicationTests {
 
 }
 	@Test
-	void MovePenDownFunctionTest() {
+	void MoveFunctionTest() {
+		
+		//PenDownOneRotation
 		Control c = new Control();
 		c.commandCenter("I 10");
 		c.commandCenter("D");
@@ -180,6 +182,8 @@ class TestingApplicationTests {
 			
 			assert c.current.getFloor()[9-i][0]==1;
 		}
+        
+        //PenDownOneRotation
 		c.commandCenter("U");
 		c.commandCenter("I 10");
 		c.commandCenter("M 9");
@@ -201,16 +205,23 @@ class TestingApplicationTests {
 		c.commandCenter("M 9");
 		
 		assert c.current.getcX()==0 & c.current.getcY()==0 ;
-        
 		
 		
+		//PenUpandDownTestDuringMovement
+		c.commandCenter("I 10");
+		c.commandCenter("D");
+		c.commandCenter("M 3");
+        for(int i=0;i<4;i++) {
+			
+			assert c.current.getFloor()[0][0+i]==1;
+		}
+        c.commandCenter("U");
+        c.commandCenter("M 6");
+        for(int i=0;i<4;i++) {
+			
+			assert c.current.getFloor()[0][4+i]==0;
+		}
 		
-		
-		
-		
-		
-		
-		assert c.current.getcY()==9;
 		
 		
 			

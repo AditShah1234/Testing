@@ -53,7 +53,6 @@ public class Control {
                     System.out.println("Invalid input");
                     break;
                  }
-                System.out.println(size);
                 init(size);
                 break;
             default:
@@ -210,6 +209,11 @@ public class Control {
 
     private void down() {
         current.setPen(true);
+        int[][] newfloor;
+        newfloor=current.getFloor();
+        newfloor[current.getcX()][current.getcY()]=1;
+        current.setFloor(newfloor);
+    
     }
     
 
