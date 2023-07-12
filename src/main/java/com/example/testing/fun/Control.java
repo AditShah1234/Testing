@@ -19,6 +19,7 @@ public class Control {
         if (command.length() != 1 && action!= 'M' && action!= 'I' )
         {
             System.out.println("Invalid command format!" );
+            return;
 
         }
 
@@ -42,7 +43,6 @@ public class Control {
                 move(spaces);
                 break;
             case 'P':
-                //Print N *N
             	current.printFloor();
                 break;
             case 'C':

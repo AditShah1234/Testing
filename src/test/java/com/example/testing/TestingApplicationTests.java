@@ -276,11 +276,94 @@ class TestingApplicationTests {
 			
 			assert c.current.getFloor()[0][4+i]==0;
 		}
-		
+	}
+		@Test
+		void InvalidInputTest() {
+
+			Control c = new Control();
+			c.commandCenter("I 10");
+			c.commandCenter("M 3");
+			c.commandCenter("L");
+			c.commandCenter("R");
+			c.commandCenter("U");
+			c.commandCenter("P");
+			c.commandCenter("C");
+			c.commandCenter("Q");
+
+			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+			PrintStream printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("X");
+			String printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input!", printedOutput);
+
+			c.commandCenter("I 10");
+
+			outputStream = new ByteArrayOutputStream();
+			printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("I");
+			printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input format!", printedOutput);
+
+
+			c.commandCenter("I 10");
+
+			outputStream = new ByteArrayOutputStream();
+			printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("I10");
+			printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input format!", printedOutput);
+
+
+			c.commandCenter("D");
+			outputStream = new ByteArrayOutputStream();
+			printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("D1");
+			printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input format!", printedOutput);
+
+
+			c.commandCenter("D");
+			outputStream = new ByteArrayOutputStream();
+			printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("D ");
+			printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input format!", printedOutput);
+
+
+			c.commandCenter("M 9");
+			outputStream = new ByteArrayOutputStream();
+			printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("M");
+			printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input format!", printedOutput);
+
+			c.commandCenter("M 9");
+			outputStream = new ByteArrayOutputStream();
+			printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("M3");
+			printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid spaces!", printedOutput);
+
+
+		}
 		
 		
 			
-	}
+
 	
 
 
