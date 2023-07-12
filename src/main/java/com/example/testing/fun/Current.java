@@ -12,7 +12,7 @@ public class Current {
     private int rot;
 
     public Current(int n) {
-        System.out.println(n);
+//        System.out.println(n);
         floor = new int[n][n];
         currentFace  = facing.NORTH;
         cX  = 0;

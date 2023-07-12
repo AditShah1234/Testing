@@ -13,7 +13,7 @@ public class Control {
 
 
     public void commandCenter(String command) {
-        System.out.println(command);
+//        System.out.println(command);
 
         char action = command.toUpperCase().charAt(0);
         if (command.length() != 1 && action!= 'M' && action!= 'I' )

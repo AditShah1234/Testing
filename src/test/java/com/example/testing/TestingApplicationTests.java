@@ -7,6 +7,8 @@ import com.example.testing.fun.Control;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -100,52 +102,105 @@ class TestingApplicationTests {
             assert next_dir(curr, k).equals(s);
 			}
         }
-	
+	@Test
+	public void testSystemOut() {
+		// Redirect System.out to a ByteArrayOutputStream
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outputStream));
+
+		// Perform the operation that prints to System.out
+		System.out.println("Hello, World!");
+
+		// Get the output from System.out
+		String printedOutput = outputStream.toString().trim();
+
+		// Restore the original System.out
+		System.setOut(System.out);
+
+		// Assert the expected output
+		Assertions.assertEquals("Hello, World!", printedOutput);
+	}
 	@Test
 	void MoveOutOfBoundsTest() {
 		Control c= new Control();
 		c.commandCenter("I 10");
-		Throwable exception1 = assertThrows(
-				IndexOutOfBoundsException.class, () -> {
-					c.commandCenter("M 11");             	
-                }
-        );
-        Assertions.assertEquals("Out of bounds error", exception1.getMessage());
-        
+//		Throwable exception1 = assertThrows(
+//				IndexOutOfBoundsException.class, () -> {
+//					c.commandCenter("M 11");
+//                }
+//        );
+
+//		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//		PrintStream printStream = new PrintStream(outputStream);
+//
+//		System.setOut(printStream);
+//		c.commandCenter("M 11");
+//		System.setOut(System.out);
+//		String output = outputStream.toString();
+//		System.out.println(output);
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		PrintStream printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		c.commandCenter("M 11");
+		String printedOutput = outputStream.toString().trim();
+		System.setOut(System.out);
+		Assertions.assertEquals("java.lang.IndexOutOfBoundsException: Out of bounds error", printedOutput);
+
+//
         c.commandCenter("I 10");
         c.commandCenter("R");
-        
-        Throwable exception2 = assertThrows(
-				IndexOutOfBoundsException.class, () -> {
-					c.commandCenter("M 11");             	
-                }
-        );
-        Assertions.assertEquals("Out of bounds error", exception2.getMessage());
-        
+//
+//        Throwable exception2 = assertThrows(
+//				IndexOutOfBoundsException.class, () -> {
+//					c.commandCenter("M 11");
+//                }
+//        );
+//        Assertions.assertEquals("Out of bounds error", exception2.getMessage());
+//
+		outputStream = new ByteArrayOutputStream();
+		printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		c.commandCenter("M 11");
+		printedOutput = outputStream.toString().trim();
+		System.setOut(System.out);
+		Assertions.assertEquals("java.lang.IndexOutOfBoundsException: Out of bounds error", printedOutput);
         c.commandCenter("I 10");
         c.commandCenter("R");
         c.commandCenter("R");
-        
-        Throwable exception3 = assertThrows(
-				IndexOutOfBoundsException.class, () -> {
-					c.commandCenter("M 11");             	
-                }
-        );
-        Assertions.assertEquals("Out of bounds error", exception3.getMessage());
-        
+//
+//        Throwable exception3 = assertThrows(
+//				IndexOutOfBoundsException.class, () -> {
+//					c.commandCenter("M 11");
+//                }
+//        );
+//        Assertions.assertEquals("Out of bounds error", exception3.getMessage());
+//
+		outputStream = new ByteArrayOutputStream();
+		printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		c.commandCenter("M 11");
+		printedOutput = outputStream.toString().trim();
+		System.setOut(System.out);
+		Assertions.assertEquals("java.lang.IndexOutOfBoundsException: Out of bounds error", printedOutput);
         c.commandCenter("I 10");
         c.commandCenter("L");
-        
-        Throwable exception4 = assertThrows(
-				IndexOutOfBoundsException.class, () -> {
-					c.commandCenter("M 11");             	
-                }
-        );
-        Assertions.assertEquals("Out of bounds error", exception4.getMessage());
-        
-        
-        
-        
+//
+//        Throwable exception4 = assertThrows(
+//				IndexOutOfBoundsException.class, () -> {
+//					c.commandCenter("M 11");
+//                }
+//        );
+//        Assertions.assertEquals("Out of bounds error", exception4.getMessage());
+//
+//
+		outputStream = new ByteArrayOutputStream();
+		printStream = new PrintStream(outputStream);
+
+		System.setOut(printStream);
+		c.commandCenter("M 11");
+		printedOutput = outputStream.toString().trim();
+		System.setOut(System.out);
+		Assertions.assertEquals("java.lang.IndexOutOfBoundsException: Out of bounds error", printedOutput);
         
 			
 
