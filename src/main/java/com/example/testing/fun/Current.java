@@ -78,7 +78,7 @@ public class Current {
     @Override
     public String toString() {
         return "Current{" +
-                ", cX=" + cX +
+                "cX=" + cX +
                 ", cY=" + cY +
                 ", Pen=" + Pen +
                 ", currentFace=" + array[rot] +

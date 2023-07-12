@@ -16,6 +16,11 @@ public class Control {
         System.out.println(command);
 
         char action = command.toUpperCase().charAt(0);
+        if (command.length() != 1 && action!= 'M' && action!= 'I' )
+        {
+            System.out.println("Invalid command format!" );
+
+        }
 
         switch (action) {
             case 'L':
