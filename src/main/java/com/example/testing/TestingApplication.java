@@ -33,7 +33,7 @@ public class TestingApplication {
 					int size = robo.parseSize(command);
 
 					if (size == -1){
-						System.out.println("Error parsing");
+						System.out.println("Invalid command format!");
 					}
 					else {
 						robo.setBoard(size);

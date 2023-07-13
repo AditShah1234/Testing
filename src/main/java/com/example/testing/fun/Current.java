@@ -66,13 +66,13 @@ public class Current {
         Pen = pen;
     }
 
-    public facing getCurrentFace() {
-        return currentFace;
-    }
-
-    public void setCurrentFace(facing currentFace) {
-        this.currentFace = currentFace;
-    }
+//    public facing getCurrentFace() {
+//        return currentFace;
+//    }
+//
+//    public void setCurrentFace(facing currentFace) {
+//        this.currentFace = currentFace;
+//    }
     public String[] array = {"North", "East", "South", "West"};
 
     @Override

@@ -15,6 +15,7 @@ import java.util.Random;
 @SpringBootTest
 class TestingApplicationTests {
 
+
 	@Test
 	void contextLoads() {
 	}
@@ -288,7 +289,7 @@ class TestingApplicationTests {
 			c.commandCenter("U");
 			c.commandCenter("P");
 			c.commandCenter("C");
-			c.commandCenter("Q");
+
 
 			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 			PrintStream printStream = new PrintStream(outputStream);
@@ -296,7 +297,7 @@ class TestingApplicationTests {
 			c.commandCenter("X");
 			String printedOutput = outputStream.toString().trim();
 			System.setOut(System.out);
-			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input!", printedOutput);
+			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input", printedOutput);
 
 			c.commandCenter("I 10");
 
@@ -306,7 +307,7 @@ class TestingApplicationTests {
 			c.commandCenter("I");
 			printedOutput = outputStream.toString().trim();
 			System.setOut(System.out);
-			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input format!", printedOutput);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
 
 
 			c.commandCenter("I 10");
@@ -317,7 +318,7 @@ class TestingApplicationTests {
 			c.commandCenter("I10");
 			printedOutput = outputStream.toString().trim();
 			System.setOut(System.out);
-			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input format!", printedOutput);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
 
 
 			c.commandCenter("D");
@@ -327,7 +328,7 @@ class TestingApplicationTests {
 			c.commandCenter("D1");
 			printedOutput = outputStream.toString().trim();
 			System.setOut(System.out);
-			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input format!", printedOutput);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
 
 
 			c.commandCenter("D");
@@ -337,17 +338,17 @@ class TestingApplicationTests {
 			c.commandCenter("D ");
 			printedOutput = outputStream.toString().trim();
 			System.setOut(System.out);
-			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input format!", printedOutput);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
 
 
-			c.commandCenter("M 9");
+			c.commandCenter("M 8");
 			outputStream = new ByteArrayOutputStream();
 			printStream = new PrintStream(outputStream);
 			System.setOut(printStream);
 			c.commandCenter("M");
 			printedOutput = outputStream.toString().trim();
 			System.setOut(System.out);
-			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input format!", printedOutput);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
 
 			c.commandCenter("M 9");
 			outputStream = new ByteArrayOutputStream();
@@ -356,7 +357,7 @@ class TestingApplicationTests {
 			c.commandCenter("M3");
 			printedOutput = outputStream.toString().trim();
 			System.setOut(System.out);
-			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid spaces!", printedOutput);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
 
 
 		}

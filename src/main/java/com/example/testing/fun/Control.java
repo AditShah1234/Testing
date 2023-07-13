@@ -40,7 +40,12 @@ public class Control {
                 break;
             case 'M':
                 int spaces = parseSpaces(command);
-                move(spaces);
+                if (spaces == -1){
+                    System.out.println("Invalid command format!");
+
+                }
+                else
+                    move(spaces);
                 break;
             case 'P':
             	current.printFloor();
@@ -55,20 +60,23 @@ public class Control {
             case 'I':
                 int size = parseSize(command);
                 if (size==-1) {
-                    System.out.println("Invalid input");
+                    System.out.println("Invalid command format!");
                     break;
                  }
-                init(size);
+                else
+                    init(size);
                 break;
             default:
                 System.out.println(new IllegalArgumentException("Invalid input").toString());
                 
         }
-        current.toString();
 
     }
     public int parseSize(String command) {
         int size = 0;
+        if (command.length() < 3 ||  command.charAt(1)!=' ') {
+            return -1;
+        }
         try {
             size = Integer.parseInt(command.substring(2));
         } catch (NumberFormatException e) {
@@ -78,10 +86,13 @@ public class Control {
     }
     public int parseSpaces(String command) {
         int spaces = 0;
+        if (command.length() < 3 ||  command.charAt(1)!=' ') {
+            return -1;
+        }
         try {
             spaces = Integer.parseInt(command.substring(2));
         } catch (NumberFormatException e) {
-            System.out.println("Invalid number of spaces!");
+           return -1;
         }
         return spaces;
     }
