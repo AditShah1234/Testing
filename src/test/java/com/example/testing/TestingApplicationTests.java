@@ -125,20 +125,7 @@ class TestingApplicationTests {
 	void MoveOutOfBoundsTest() {
 		Control c= new Control();
 		c.commandCenter("I 10");
-//		Throwable exception1 = assertThrows(
-//				IndexOutOfBoundsException.class, () -> {
-//					c.commandCenter("M 11");
-//                }
-//        );
-
-//		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//		PrintStream printStream = new PrintStream(outputStream);
-//
-//		System.setOut(printStream);
-//		c.commandCenter("M 11");
-//		System.setOut(System.out);
-//		String output = outputStream.toString();
-//		System.out.println(output);
+		//North
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		PrintStream printStream = new PrintStream(outputStream);
 		System.setOut(printStream);
@@ -146,18 +133,9 @@ class TestingApplicationTests {
 		String printedOutput = outputStream.toString().trim();
 		System.setOut(System.out);
 		Assertions.assertEquals("java.lang.IndexOutOfBoundsException: Out of bounds error", printedOutput);
-
-//
-        c.commandCenter("I 10");
+        //East
+		c.commandCenter("I 10");
         c.commandCenter("R");
-//
-//        Throwable exception2 = assertThrows(
-//				IndexOutOfBoundsException.class, () -> {
-//					c.commandCenter("M 11");
-//                }
-//        );
-//        Assertions.assertEquals("Out of bounds error", exception2.getMessage());
-//
 		outputStream = new ByteArrayOutputStream();
 		printStream = new PrintStream(outputStream);
 		System.setOut(printStream);
@@ -165,17 +143,10 @@ class TestingApplicationTests {
 		printedOutput = outputStream.toString().trim();
 		System.setOut(System.out);
 		Assertions.assertEquals("java.lang.IndexOutOfBoundsException: Out of bounds error", printedOutput);
-        c.commandCenter("I 10");
+        //South
+		c.commandCenter("I 10");
         c.commandCenter("R");
         c.commandCenter("R");
-//
-//        Throwable exception3 = assertThrows(
-//				IndexOutOfBoundsException.class, () -> {
-//					c.commandCenter("M 11");
-//                }
-//        );
-//        Assertions.assertEquals("Out of bounds error", exception3.getMessage());
-//
 		outputStream = new ByteArrayOutputStream();
 		printStream = new PrintStream(outputStream);
 		System.setOut(printStream);
@@ -183,28 +154,16 @@ class TestingApplicationTests {
 		printedOutput = outputStream.toString().trim();
 		System.setOut(System.out);
 		Assertions.assertEquals("java.lang.IndexOutOfBoundsException: Out of bounds error", printedOutput);
+        //West
         c.commandCenter("I 10");
         c.commandCenter("L");
-//
-//        Throwable exception4 = assertThrows(
-//				IndexOutOfBoundsException.class, () -> {
-//					c.commandCenter("M 11");
-//                }
-//        );
-//        Assertions.assertEquals("Out of bounds error", exception4.getMessage());
-//
-//
 		outputStream = new ByteArrayOutputStream();
 		printStream = new PrintStream(outputStream);
-
 		System.setOut(printStream);
 		c.commandCenter("M 11");
 		printedOutput = outputStream.toString().trim();
 		System.setOut(System.out);
 		Assertions.assertEquals("java.lang.IndexOutOfBoundsException: Out of bounds error", printedOutput);
-        
-			
-
 }
 	@Test
 	void MoveFunctionTest() {
@@ -239,7 +198,7 @@ class TestingApplicationTests {
 			assert c.current.getFloor()[9-i][0]==1;
 		}
         
-        //PenDownOneRotation
+        //PenUpOneRotation
 		c.commandCenter("U");
 		c.commandCenter("I 10");
 		c.commandCenter("M 9");
