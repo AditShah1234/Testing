@@ -24,19 +24,32 @@ public class Current {
     public int[][] getFloor() {
         return floor;
     }
-    public void printFloor() {
+    
+    
+    public char[][] printFloor() {
         int size = floor.length;
+        char[][] print = new char[size][size];
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
             	if(floor[j][size-i-1]==1)
-                System.out.print("* ");
+                
+                print[i][j]= '*';
             	else {
-            		System.out.print("0 ");
+            		print[i][j]= '0';
             	}
             }
-            System.out.println();
+            
+
         }
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+            	System.out.print(print[i][j]+" ");
+            }
+        System.out.println();
+        }
+
+        return print;
     }
     public void setFloor(int[][] floor) {
         this.floor = floor;

@@ -321,6 +321,48 @@ class TestingApplicationTests {
 
 		}
 		
+		@Test
+        void PrintFunctionTest() {
+			Control c = new Control();
+
+			//Initialize the system, the array elements will be set to 0
+			c.commandCenter("I 6");
+			for (int i = 0; i < 6; i++) {
+		        for (int j = 0; j < 6; j++) {
+		        	assert c.current.printFloor()[i][j] == '0';
+		        }}
+			//Moving while pen up and the array elements will be 0
+			c.commandCenter("M 5");
+			for (int i = 5; i >= 0; i--) {
+		        	assert c.current.printFloor()[i][0] == '0';
+			}
+
+			//Moving while pen down and the array elements will be 1 in the path moved
+			c.commandCenter("D");
+			c.commandCenter("R");
+			c.commandCenter("M 4");
+			for (int j = 0; j <4; j++) {
+	        	assert c.current.printFloor()[0][0] == '*';
+			}
+
+			//Moving while pen down and pen up and checking together
+			c.commandCenter("I 10");
+			c.commandCenter("M 9");
+			c.commandCenter("D");
+			c.commandCenter("R");
+			c.commandCenter("M 9");
+			for(int i=9;i>0;i--)
+				assert c.current.printFloor()[i][0] == '0';
+			for(int j=0;j<10;j++)
+				assert c.current.printFloor()[0][j] == '*';
+
+
+
+
+
+	}
+
+		
 		
 			
 
