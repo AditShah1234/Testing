@@ -16,7 +16,7 @@ public class Control {
 //        System.out.println(command);
 
         char action = command.toUpperCase().charAt(0);
-        if (command.length() != 1 && action!= 'M' && action!= 'I' )
+        if (command.length() != 1 && action!= 'M' && action!= 'I' ) //R3
         {
             System.out.println("Invalid command format!" );
             return;
@@ -24,21 +24,21 @@ public class Control {
         }
 
         switch (action) {
-            case 'L':
+            case 'L': //R2
                 left();
 
                 break;
-            case 'R':
+            case 'R': //R2
                 right();
                 break;
-            case 'U':
+            case 'U': //R2
                 up();
 
                 break;
-            case 'D':
+            case 'D': //R2
                 down();
                 break;
-            case 'M':
+            case 'M': // R1
                 int spaces = parseSpaces(command);
                 if (spaces == -1){
                     System.out.println("Invalid command format!");
@@ -47,7 +47,7 @@ public class Control {
                 else
                     move(spaces);
                 break;
-            case 'P':
+            case 'P': //R4
             	current.printFloor();
                 break;
             case 'C':
@@ -66,7 +66,7 @@ public class Control {
                 else
                     init(size);
                 break;
-            default:
+            default: //R3
                 System.out.println(new IllegalArgumentException("Invalid input").toString());
                 
         }
@@ -97,7 +97,7 @@ public class Control {
         return spaces;
     }
     
-    private void move(int spaces) {
+    private void move(int spaces)  {  //R1
     	
     	    //North
     	    if(current.getRot()==0) {
@@ -184,7 +184,7 @@ public class Control {
 
 
 
-    private void right() {
+    private void right() { //R2
 
         if (current.getRot() == 0) {
             current.setRot(1);
@@ -207,7 +207,7 @@ public class Control {
         current = new Current(n);
     }
 
-    private void left() {
+    private void left() { //R2
         if (current.getRot() == 0) {
             current.setRot(3);
         }
@@ -222,11 +222,11 @@ public class Control {
         }
     }
 
-    private void up() {
+    private void up() { //R2
         current.setPen(false);
     }
 
-    private void down() {
+    private void down() { //R2
         current.setPen(true);
         int[][] newfloor;
         newfloor=current.getFloor();

@@ -16,10 +16,8 @@ import java.util.Random;
 class TestingApplicationTests {
 
 
-	@Test
-	void contextLoads() {
-	}
-	String next_dir(String Current, String input){
+	
+	String next_dir(String Current, String input){  //R2
 		if (Current.equals("North") && (input.equals("R") || input.equals("r")))
 			return "East";
 		else if (Current.equals("North") && (input.equals("L") || input.equals("l")))
@@ -40,7 +38,7 @@ class TestingApplicationTests {
 			return null;
 	}
 	@Test
-	void Pentest(){
+	void Pentest(){ //R2
 		Control c = new Control();
         Random random = new Random();
 
@@ -57,7 +55,7 @@ class TestingApplicationTests {
 
 	}
 	@Test
-	void floorTest(){
+	void floorTest(){ //R4
 		Control c = new Control();
 		Random random = new Random();
 
@@ -68,7 +66,7 @@ class TestingApplicationTests {
 		assert  floor1.length==n;
 	}
 	@Test
-	void ControlTest(){
+	void ControlTest(){ //R2
 		//Full rotation test
 		Control c = new Control();
 		int  n= 10;
@@ -104,25 +102,25 @@ class TestingApplicationTests {
 			}
         }
 	@Test
-	public void testSystemOut() {
-		// Redirect System.out to a ByteArrayOutputStream
+	public void testSystemOut() { //R4
+		
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outputStream));
 
-		// Perform the operation that prints to System.out
+		
 		System.out.println("Hello, World!");
 
-		// Get the output from System.out
+		
 		String printedOutput = outputStream.toString().trim();
 
-		// Restore the original System.out
+		
 		System.setOut(System.out);
 
-		// Assert the expected output
+	
 		Assertions.assertEquals("Hello, World!", printedOutput);
 	}
 	@Test
-	void MoveOutOfBoundsTest() {
+	void MoveOutOfBoundsTest() { //R1
 		Control c= new Control();
 		c.commandCenter("I 10");
 		//North
@@ -166,7 +164,7 @@ class TestingApplicationTests {
 		Assertions.assertEquals("java.lang.IndexOutOfBoundsException: Out of bounds error", printedOutput);
 }
 	@Test
-	void MoveFunctionTest() {
+	void MoveFunctionTest() { //R1
 		
 		//PenDownOneRotation
 		Control c = new Control();
@@ -238,7 +236,7 @@ class TestingApplicationTests {
 		}
 	}
 		@Test
-		void InvalidInputTest() {
+		void InvalidInputTest() { //R3
 
 			Control c = new Control();
 			c.commandCenter("I 10");
@@ -322,7 +320,7 @@ class TestingApplicationTests {
 		}
 		
 		@Test
-        void PrintFunctionTest() {
+        void PrintFunctionTest() { //R4
 			Control c = new Control();
 
 			//Initialize the system, the array elements will be set to 0
