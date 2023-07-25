@@ -1,0 +1,21 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TestingApplicationTests" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <module name="testing" />
+    <extension name="coverage" sample_coverage="false" track_test_folders="true" runner="jacoco">
+      <pattern>
+        <option name="PATTERN" value="com.example.testing.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="PACKAGE_NAME" value="com.example.testing" />
+    <option name="MAIN_CLASS_NAME" value="com.example.testing.TestingApplicationTests" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="class" />
+    <option name="TEST_SEARCH_SCOPE">
+      <value defaultName="moduleWithDependencies" />
+    </option>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

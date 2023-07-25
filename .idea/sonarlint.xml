@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SonarLintProjectSettings">
+    <option name="additionalProperties">
+      <map>
+        <entry key="Testing" value="" />
+      </map>
+    </option>
+    <option name="bindingEnabled" value="true" />
+    <option name="fileExclusions">
+      <list>
+        <option value="FILE:src/test/java/com/example/testing/TestingApplicationTests.java" />
+      </list>
+    </option>
+    <option name="projectKey" value="AditShah1234_Testing" />
+    <option name="serverId" value="testing" />
+  </component>
+</project>

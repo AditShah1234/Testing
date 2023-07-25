@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.example.testing.fun.Control;
-
+import com.example.testing.TestingApplication;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayOutputStream;
@@ -102,7 +102,7 @@ class TestingApplicationTests {
 			}
         }
 	@Test
-	public void testSystemOut() { //R4
+	 void testSystemOut() { //R4
 		
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outputStream));

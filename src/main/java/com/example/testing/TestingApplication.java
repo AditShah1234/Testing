@@ -8,26 +8,28 @@ import com.example.testing.fun.Control;
 @SpringBootApplication
 public class TestingApplication {
 
+
 	public static void main(String[] args) {
+//		System.out.println(args.toString()+"here");
 		SpringApplication.run(TestingApplication.class, args);
 		Scanner scanner = new Scanner(System.in);
 
-
+		String command;
 		Control robo = new Control();
 
-		Boolean start = true;
+		boolean start = true;
 
 		while (true) {
 			if (!start) {
 				System.out.print("Enter command: ");
-				String command = scanner.nextLine();
+				command = scanner.nextLine();
 
 				robo.commandCenter(command);
 
 			}
 			else {
 				System.out.print("Please Initialize the board: ");
-				String command = scanner.nextLine();
+				command = scanner.nextLine();
 				if (command.toUpperCase().charAt(0) == 'I') {
 
 					int size = robo.parseSize(command);
