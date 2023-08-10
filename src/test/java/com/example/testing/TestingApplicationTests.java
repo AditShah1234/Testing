@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.example.testing.fun.Control;
-import com.example.testing.TestingApplication;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayOutputStream;
@@ -102,7 +102,7 @@ class TestingApplicationTests {
 			}
         }
 	@Test
-	 void testSystemOut() { //R4
+	public void testSystemOut() { //R4
 		
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outputStream));
@@ -235,89 +235,89 @@ class TestingApplicationTests {
 			assert c.current.getFloor()[0][4+i]==0;
 		}
 	}
-		@Test
-		void InvalidInputTest() { //R3
+	@Test
+	void InvalidInputTest() { //R3
 
-			Control c = new Control();
-			c.commandCenter("I 10");
-			c.commandCenter("M 3");
-			c.commandCenter("L");
-			c.commandCenter("R");
-			c.commandCenter("U");
-			c.commandCenter("P");
-			c.commandCenter("C");
-
-
-			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-			PrintStream printStream = new PrintStream(outputStream);
-			System.setOut(printStream);
-			c.commandCenter("X");
-			String printedOutput = outputStream.toString().trim();
-			System.setOut(System.out);
-			Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input", printedOutput);
-
-			c.commandCenter("I 10");
-
-			outputStream = new ByteArrayOutputStream();
-			printStream = new PrintStream(outputStream);
-			System.setOut(printStream);
-			c.commandCenter("I");
-			printedOutput = outputStream.toString().trim();
-			System.setOut(System.out);
-			Assertions.assertEquals("Invalid command format!", printedOutput);
+		Control c = new Control();
+		c.commandCenter("I 10");
+		c.commandCenter("M 3");
+		c.commandCenter("L");
+		c.commandCenter("R");
+		c.commandCenter("U");
+		c.commandCenter("P");
+		c.commandCenter("C");
 
 
-			c.commandCenter("I 10");
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		PrintStream printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		c.commandCenter("X");
+		String printedOutput = outputStream.toString().trim();
+		System.setOut(System.out);
+		Assertions.assertEquals("java.lang.IllegalArgumentException: Invalid input", printedOutput);
 
-			outputStream = new ByteArrayOutputStream();
-			printStream = new PrintStream(outputStream);
-			System.setOut(printStream);
-			c.commandCenter("I10");
-			printedOutput = outputStream.toString().trim();
-			System.setOut(System.out);
-			Assertions.assertEquals("Invalid command format!", printedOutput);
+		c.commandCenter("I 10");
 
-
-			c.commandCenter("D");
-			outputStream = new ByteArrayOutputStream();
-			printStream = new PrintStream(outputStream);
-			System.setOut(printStream);
-			c.commandCenter("D1");
-			printedOutput = outputStream.toString().trim();
-			System.setOut(System.out);
-			Assertions.assertEquals("Invalid command format!", printedOutput);
+		outputStream = new ByteArrayOutputStream();
+		printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		c.commandCenter("I");
+		printedOutput = outputStream.toString().trim();
+		System.setOut(System.out);
+		Assertions.assertEquals("Invalid command format!", printedOutput);
 
 
-			c.commandCenter("D");
-			outputStream = new ByteArrayOutputStream();
-			printStream = new PrintStream(outputStream);
-			System.setOut(printStream);
-			c.commandCenter("D ");
-			printedOutput = outputStream.toString().trim();
-			System.setOut(System.out);
-			Assertions.assertEquals("Invalid command format!", printedOutput);
+		c.commandCenter("I 10");
+
+		outputStream = new ByteArrayOutputStream();
+		printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		c.commandCenter("I10");
+		printedOutput = outputStream.toString().trim();
+		System.setOut(System.out);
+		Assertions.assertEquals("Invalid command format!", printedOutput);
 
 
-			c.commandCenter("M 8");
-			outputStream = new ByteArrayOutputStream();
-			printStream = new PrintStream(outputStream);
-			System.setOut(printStream);
-			c.commandCenter("M");
-			printedOutput = outputStream.toString().trim();
-			System.setOut(System.out);
-			Assertions.assertEquals("Invalid command format!", printedOutput);
-
-			c.commandCenter("M 9");
-			outputStream = new ByteArrayOutputStream();
-			printStream = new PrintStream(outputStream);
-			System.setOut(printStream);
-			c.commandCenter("M3");
-			printedOutput = outputStream.toString().trim();
-			System.setOut(System.out);
-			Assertions.assertEquals("Invalid command format!", printedOutput);
+		c.commandCenter("D");
+		outputStream = new ByteArrayOutputStream();
+		printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		c.commandCenter("D1");
+		printedOutput = outputStream.toString().trim();
+		System.setOut(System.out);
+		Assertions.assertEquals("Invalid command format!", printedOutput);
 
 
-		}
+		c.commandCenter("D");
+		outputStream = new ByteArrayOutputStream();
+		printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		c.commandCenter("D ");
+		printedOutput = outputStream.toString().trim();
+		System.setOut(System.out);
+		Assertions.assertEquals("Invalid command format!", printedOutput);
+
+
+		c.commandCenter("M 8");
+		outputStream = new ByteArrayOutputStream();
+		printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		c.commandCenter("M");
+		printedOutput = outputStream.toString().trim();
+		System.setOut(System.out);
+		Assertions.assertEquals("Invalid command format!", printedOutput);
+
+		c.commandCenter("M 9");
+		outputStream = new ByteArrayOutputStream();
+		printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		c.commandCenter("M3");
+		printedOutput = outputStream.toString().trim();
+		System.setOut(System.out);
+		Assertions.assertEquals("Invalid command format!", printedOutput);
+
+
+	}
 		
 		@Test
         void PrintFunctionTest() { //R4
@@ -359,6 +359,75 @@ class TestingApplicationTests {
 
 
 	}
+		
+		@Test
+		void BugRepTest() {
+			
+			
+			Control c = new Control();
+			
+			
+			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+			PrintStream printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("I 201");                                        //Out Of Input bounds I
+			String printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
+			
+			
+			outputStream = new ByteArrayOutputStream();
+			printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("I 0");                                       //Out Of Input bounds I
+			printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
+			
+			
+			c.commandCenter("I 10");
+			
+			
+			outputStream = new ByteArrayOutputStream();
+			printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("I 201");                                        //Out Of Input bounds I
+			printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
+			
+			
+			outputStream = new ByteArrayOutputStream();
+			printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("I 0");                                       //Out Of Input bounds I
+			printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
+			
+			
+			outputStream = new ByteArrayOutputStream();
+			printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("M 0");                                   // Out of bounds input M
+			printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
+			
+			
+			outputStream = new ByteArrayOutputStream();
+			printStream = new PrintStream(outputStream);
+			System.setOut(printStream);
+			c.commandCenter("M 201");                               // Out of bounds input M
+			printedOutput = outputStream.toString().trim();
+			System.setOut(System.out);
+			Assertions.assertEquals("Invalid command format!", printedOutput);
+			
+			
+			
+			
+		}
+
 
 		
 		
