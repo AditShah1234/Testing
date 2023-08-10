@@ -40,7 +40,7 @@ public class Control {
                 break;
             case 'M': // R1
                 int spaces = parseSpaces(command);
-                if (spaces == -1){
+                if (spaces == -1 | spaces<=0 | spaces>= 200){
                     System.out.println("Invalid command format!");
 
                 }
@@ -59,7 +59,7 @@ public class Control {
                 break;
             case 'I':
                 int size = parseSize(command);
-                if (size==-1) {
+                if (size==-1 | size<=2 | size>=200 ) {
                     System.out.println("Invalid command format!");
                     break;
                  }
